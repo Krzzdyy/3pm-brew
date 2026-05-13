@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3PM Brew — Slow pace. Strong Brew.</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo">3PM<span>.</span>BREW</a>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Vibe</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#location">Visit Us</a></li>
+      <li><a href="#contact" class="nav-cta">Order Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu">✕</button>
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#experience">Vibe</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#location">Visit Us</a>
+    <a href="#contact">Order Now</a>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-particles" id="hero-particles"></div>
+    <div class="hero-bg-text">BREW<br>BREW</div>
+
+    <div class="hero-content">
+
+      <!-- Left -->
+      <div class="hero-left">
+       
+
+        <h1 class="hero-title">
+          Slow pace.<br>
+          <em>Strong brew.</em>
+        </h1>
+
+        <p class="hero-subtitle">
+          Handcrafted brews and good vibes in Sanga-Sanga, Tawi-Tawi.
+          Whether you're deep in deadlines or just here for the aesthetic — 3PM Brew is your spot.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#menu" class="btn-primary">
+            View Menu
+          </a>
+          <a href="#location" class="btn-secondary">
+            Visit Us
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number count-up" data-target="50" data-suffix="+">0+</span>
+            <span class="stat-label">Daily Orders</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number count-up" data-target="18" data-suffix="">0</span>
+            <span class="stat-label">Drinks</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number count-up" data-target="98" data-suffix="%">0%</span>
+            <span class="stat-label">Happy Customers</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right — Featured Drink (Starbucks-style) -->
+      <div class="hero-right">
+        <div class="featured-card">
+          <div class="featured-tag">Most Loved Drink</div>
+
+          <img
+            id="featured-img"
+            src="images/spanish latte.png"
+            alt="Featured Drink"
+            class="featured-drink-img"
+          />
+
+          <p class="featured-drink-name" id="featured-name">Spanish Latte</p>
+          <p class="featured-drink-desc" id="featured-desc">
+            Rich espresso meets sweet condensed milk for a bold, velvety kick.
+          </p>
+
+          <div class="featured-price-row">
+            <span class="featured-price" id="featured-price">₱89</span>
+            <button class="featured-order-btn">Order Now</button>
+          </div>
+
+          <!-- Dot indicators -->
+          <div style="display:flex;justify-content:center;gap:0.5rem;margin-top:1.25rem;position:relative;z-index:1;">
+            <button class="drink-dot active" data-index="0" style="width:8px;height:8px;border-radius:50%;background:var(--orange);border:none;cursor:pointer;transition:all 0.3s;"></button>
+            <button class="drink-dot" data-index="1" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);border:none;cursor:pointer;transition:all 0.3s;"></button>
+            <button class="drink-dot" data-index="2" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);border:none;cursor:pointer;transition:all 0.3s;"></button>
+            <button class="drink-dot" data-index="3" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);border:none;cursor:pointer;transition:all 0.3s;"></button>
+          </div>
+        </div>
+
+        <div class="hero-vertical-text">- 3PM Brew -</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BESTSELLERS ============ -->
+  <section class="section bestsellers" id="bestsellers">
+    <div class="container">
+      <div class="bestsellers-header">
+        <div>
+          <p class="section-label fade-up">Best Sellers</p>
+          <h2 class="section-title fade-up fade-up-delay-1">Our Signature <em>Drinks</em></h2>
+        </div>
+        <a href="#menu" class="btn-primary fade-up fade-up-delay-2" style="text-decoration:none;font-size:0.85rem;padding:0.7rem 1.5rem;">
+          See Full Menu →
+        </a>
+      </div>
+
+      <div class="drinks-grid">
+
+        <!-- Spanish Latte -->
+        <div class="drink-card fade-up">
+          <div class="drink-card-img-wrap">
+            
+            <img src="images/spanish latte.png" alt="Spanish Latte" />
+          </div>
+          <div class="drink-card-body">
+            <h3 class="drink-card-name">Spanish Latte</h3>
+            <p class="drink-card-desc">Bold espresso sweetened with rich condensed milk — the crowd favorite for a reason.</p>
+            <div class="drink-card-footer">
+              <span class="drink-card-price">₱89</span>
+              <button class="drink-card-add" aria-label="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Matcha Latte -->
+        <div class="drink-card fade-up fade-up-delay-1">
+          <div class="drink-card-img-wrap">
+            <img src="images/matcha latte.png" alt="Matcha Latte" />
+          </div>
+          <div class="drink-card-body">
+            <h3 class="drink-card-name">Matcha Latte</h3>
+            <p class="drink-card-desc">Ceremonial-grade matcha blended into creamy smooth milk. Earthy, calming, and beautiful.</p>
+            <div class="drink-card-footer">
+              <span class="drink-card-price">₱99</span>
+              <button class="drink-card-add" aria-label="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Strawberry Milk -->
+        <div class="drink-card fade-up fade-up-delay-2">
+          <div class="drink-card-img-wrap">
+            <img src="images/strawberry milk.png" alt="Strawberry Milk" />
+          </div>
+          <div class="drink-card-body">
+            <h3 class="drink-card-name">Strawberry Milk</h3>
+            <p class="drink-card-desc">Real strawberry chunks swirled into silky fresh milk. Fruity, sweet, and totally addictive.</p>
+            <div class="drink-card-footer">
+              <span class="drink-card-price">₱89</span>
+              <button class="drink-card-add" aria-label="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Caramel Macchiato -->
+        <div class="drink-card fade-up fade-up-delay-3">
+          <div class="drink-card-img-wrap">
+            <img src="images/caramel macchiato.png" alt="Caramel Macchiato" />
+          </div>
+          <div class="drink-card-body">
+            <h3 class="drink-card-name">Caramel Macchiato</h3>
+            <p class="drink-card-desc">Espresso layered over vanilla milk, topped with a golden caramel drizzle. Decadent.</p>
+            <div class="drink-card-footer">
+              <span class="drink-card-price">₱89</span>
+              <button class="drink-card-add" aria-label="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section about" id="about">
+    <div class="container about-grid">
+
+      <div class="about-img-collage fade-up">
+        <div class="collage-img"><img src="images/brew-ambience.jpg" alt="3PM Brew ambiance" /></div>
+        <div class="collage-img"><img src="images/brew-drink.jpg" alt="3PM Brew drinks" /></div>
+        <div class="collage-img"><img src="images/brew-vibe.jpg" alt="3PM Brew vibe" /></div>
+      </div>
+
+      <div class="fade-up fade-up-delay-1">
+        <p class="section-label" style="color:var(--orange);">Our Story</p>
+        <h2 class="section-title" style="color:var(--cream);margin-bottom:1rem;">
+          Built for <em>dreamers</em> and late-night grinders.
+        </h2>
+        <p class="section-desc" style="color:rgba(235,225,209,0.7);margin-bottom:1.5rem;">
+          3PM Brew started with one simple idea: great coffee shouldn't be complicated. We brew every cup with care — no shortcuts, no compromises. Just real coffee for real people.
+        </p>
+        <p class="section-desc" style="color:rgba(235,225,209,0.7);margin-bottom:2rem;">
+          Whether you're powering through a thesis, catching up with friends, or just treating yourself at 3 in the afternoon — we'll have something waiting for you.
+        </p>
+
+        <div class="about-tags">
+          <div class="about-tag"><span class="material-symbols-outlined">eyeglasses_2</span> Study-Friendly</div>
+          <div class="about-tag"><span class="material-symbols-outlined">palette</span> Aesthetic Vibes</div>
+          <div class="about-tag"><span class="material-symbols-outlined">diversity_3</span> Community Space</div>
+          <div class="about-tag"><span class="material-symbols-outlined">coffee</span> Handcrafted Daily</div>
+        </div>
+
+        <a href="#menu" class="btn-primary" style="display:inline-flex;margin-top:1rem;">Explore Our Menu →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="section experience" id="experience">
+    <div class="container">
+      <div class="exp-header fade-up">
+        <p class="section-label">The Vibe</p>
+        <h2 class="section-title">Your <em>Third Place</em></h2>
+        <p class="section-desc">Coffee shops aren't just about coffee anymore. They're about how they make you feel.</p>
+      </div>
+
+      <div class="exp-grid">
+
+        <div class="exp-card fade-up">
+          <img src="images/vibe1.jpg" alt="Study and work vibe" class="exp-card-img" />
+          <div class="exp-card-content">
+            
+            <h3 class="exp-card-title">Study & Work</h3>
+            <p class="exp-card-desc">Free Wi-Fi, cozy seats, and enough caffeine to outlast any deadline.</p>
+          </div>
+        </div>
+
+        <div class="exp-card fade-up fade-up-delay-1">
+          <img src="images/vibe2.jpg" alt="Slow afternoon vibe" class="exp-card-img" />
+          <div class="exp-card-content">
+            
+            <h3 class="exp-card-title">Slow Afternoons</h3>
+            <p class="exp-card-desc">Lo-fi beats, warm lighting, and a menu made for unwinding.</p>
+          </div>
+        </div>
+
+        <div class="exp-card fade-up fade-up-delay-2">
+          <img src="images/vibe-crew.jpg" alt="Hang out with friends" class="exp-card-img" />
+          <div class="exp-card-content">
+            
+            <h3 class="exp-card-title">Catch Up With Crew</h3>
+            <p class="exp-card-desc">The perfect backdrop for conversations that go way deeper than the menu.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FULL MENU ============ -->
+  <section class="section menu-section" id="menu">
+    <div class="container">
+      <div class="menu-header fade-up">
+        <p class="section-label">Full Menu</p>
+        <h2 class="section-title">What Are You <em>Craving?</em></h2>
+        <p class="section-desc">Explore everything we brew — from bold coffees to refreshing non-caffeinated sips.</p>
+      </div>
+
+      <div class="menu-tabs fade-up fade-up-delay-1">
+        <button class="menu-tab active" data-tab="coffee">☕ Coffee</button>
+        <button class="menu-tab" data-tab="noncoffee">🍵 Non-Coffee</button>
+        
+      </div>
+
+      <!-- Coffee -->
+      <div class="menu-grid menu-content" data-menu="coffee">
+        <div class="menu-card fade-up">
+          <div class="menu-card-img"><img src="images/spanish_latte.png" alt="Spanish Latte" /></div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Spanish Latte</h3>
+            <p class="menu-card-desc">Espresso + condensed milk</p>
+            <div class="menu-card-footer"><span class="menu-card-price">₱99</span></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up fade-up-delay-1">
+          <div class="menu-card-img"><img src="images/caramel_macchiato.png" alt="Caramel Macchiato" /></div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Caramel Macchiato</h3>
+            <p class="menu-card-desc">Espresso + vanilla milk + caramel</p>
+            <div class="menu-card-footer"><span class="menu-card-price">₱109</span></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up fade-up-delay-2">
+          <div class="menu-card-img"><img src="images/menu_americano.jpg" alt="Iced Americano" /></div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Iced Americano</h3>
+            <p class="menu-card-desc">Double shot + cold water + ice</p>
+            <div class="menu-card-footer"><span class="menu-card-price">₱85</span></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up fade-up-delay-3">
+          <div class="menu-card-img"><img src="images/menu_honey_latte.jpg" alt="Honey Oat Latte" /></div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Honey Oat Latte</h3>
+            <p class="menu-card-desc">Espresso + oat milk + local honey</p>
+            <div class="menu-card-footer"><span class="menu-card-price">₱115</span></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up">
+          <div class="menu-card-img"><img src="images/menu_sea_salt.jpg" alt="Sea Salt Cold Brew" /></div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Sea Salt Cold Brew</h3>
+            <p class="menu-card-desc">Cold brew + sea salt cream topping</p>
+            <div class="menu-card-footer"><span class="menu-card-price">₱120</span></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up fade-up-delay-1">
+          <div class="menu-card-img"><img src="images/menu_mocha.jpg" alt="Mocha Latte" /></div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Mocha Latte</h3>
+            <p class="menu-card-desc">Espresso + chocolate + steamed milk</p>
+            <div class="menu-card-footer"><span class="menu-card-price">₱105</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Non-Coffee -->
+      <div class="menu-grid menu-content" data-menu="noncoffee" style="display:none;">
+        <div class="menu-card fade-up">
+          <div class="menu-card-img"><img src="images/matcha_latte.png" alt="Matcha Latte" /></div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Matcha Latte</h3>
+            <p class="menu-card-desc">Ceremonial matcha + milk</p>
+            <div class="menu-card-footer"><span class="menu-card-price">₱105</span></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up fade-up-delay-1">
+          <div class="menu-card-img"><img src="images/strawberry_milk.png" alt="Strawberry Milk" /></div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Strawberry Milk</h3>
+            <p class="menu-card-desc">Fresh strawberries + fresh milk</p>
+            <div class="menu-card-footer"><span class="menu-card-price">₱95</span></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up fade-up-delay-2">
+          <div class="menu-card-img"><img src="images/menu_brown_sugar.jpg" alt="Brown Sugar Milk Tea" /></div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Brown Sugar Milk Tea</h3>
+            <p class="menu-card-desc">Milk tea + homemade brown sugar syrup</p>
+            <div class="menu-card-footer"><span class="menu-card-price">₱95</span></div>
+          </div>
+        </div>
+        <div class="menu-card fade-up fade-up-delay-3">
+          <div class="menu-card-img"><img src="images/menu_blueberry.jpg" alt="Blueberry Yogurt" /></div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Blueberry Yogurt</h3>
+            <p class="menu-card-desc">Blueberry + yogurt + milk</p>
+            <div class="menu-card-footer"><span class="menu-card-price">₱110</span></div>
+          </div>
+        </div>
+      </div>
+
+  
+
+    
+
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header fade-up">
+        <p class="section-label">Reviews</p>
+        <h2 class="section-title">What People <em>Say</em></h2>
+      </div>
+
+      <div class="reviews-grid">
+
+        <div class="review-card fade-up">
+          <div class="review-screenshot-static">
+            <img src="images/review1.png" alt="Customer review screenshot" />
+          </div>
+          <div class="review-author">
+            <div class="review-avatar">A</div>
+            <div>
+              <div class="review-name">Customer Name</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card fade-up fade-up-delay-1">
+          <div class="review-screenshot-static">
+            <img src="images/review2.png" alt="Customer review screenshot" />
+          </div>
+          <div class="review-author">
+            <div class="review-avatar">B</div>
+            <div>
+              <div class="review-name">Customer Name</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card fade-up fade-up-delay-2">
+          <div class="review-screenshot-static">
+            <img src="images/review3.png" alt="Customer review screenshot" />
+          </div>
+          <div class="review-author">
+            <div class="review-avatar">C</div>
+            <div>
+              <div class="review-name">Customer Name</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOCATION ============ -->
+  <section class="section location-section" id="location">
+    <div class="container location-grid">
+
+      <!-- Map Embed -->
+      <div class="location-map fade-up">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.048!2d124.6319!3d8.4542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zCagayan de Oro!5e0!3m2!1sen!2sph!4v1"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="3PM Brew Location"
+        ></iframe>
+      </div>
+
+      <div class="fade-up fade-up-delay-1">
+        <p class="section-label" style="color:var(--orange);">Find Us</p>
+        <h2 class="section-title" style="margin-bottom:2rem;">Come <em>Find Us</em></h2>
+
+        <div class="location-info">
+          <div class="location-detail">
+            <div class="location-detail-icon">📍</div>
+            <div class="location-detail-text">
+              <h4>Address</h4>
+              <p>Your Street Address Here<br>Cagayan de Oro, Misamis Oriental</p>
+            </div>
+          </div>
+
+          <div class="location-detail">
+            <div class="location-detail-icon">🕐</div>
+            <div class="location-detail-text">
+              <h4>Operating Hours</h4>
+              <div class="hours-grid">
+                <div class="hour-row"><span>Mon – Fri</span><span>8:00 AM – 10:00 PM</span></div>
+                <div class="hour-row"><span>Saturday</span><span>9:00 AM – 11:00 PM</span></div>
+                <div class="hour-row"><span>Sunday</span><span>10:00 AM – 9:00 PM</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="location-detail">
+            <div class="location-detail-icon">🏢</div>
+            <div class="location-detail-text">
+              <h4>Landmarks</h4>
+              <p>Near [Add Landmark Here] — look for the green sign.</p>
+            </div>
+          </div>
+
+          <div class="location-detail">
+            <div class="location-detail-icon">🅿️</div>
+            <div class="location-detail-text">
+              <h4>Parking</h4>
+              <p>Free parking available in front of the café.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / SOCIAL ============ -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-inner fade-up">
+        <div class="contact-grid">
+
+          <div class="contact-left">
+            <p class="section-label" style="color:var(--orange);">Stay Connected</p>
+            <h2 class="section-title">Follow us for new<br><em>drinks & promos.</em></h2>
+            <p>We drop new drinks, limited offers, and behind-the-scenes content. Don't miss out.</p>
+            <div class="social-links">
+              <a href="#" class="social-link">
+                <span>📸</span> Instagram
+              </a>
+              <a href="#" class="social-link">
+                <span>👍</span> Facebook
+              </a>
+              <a href="#" class="social-link">
+                <span>🎵</span> TikTok
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-item-icon">📞</div>
+              <div class="contact-item-text">
+                <strong>Phone / WhatsApp</strong>
+                +63 XXX XXX XXXX
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📧</div>
+              <div class="contact-item-text">
+                <strong>Email</strong>
+                hello@3pmbrew.com
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📱</div>
+              <div class="contact-item-text">
+                <strong>Instagram</strong>
+                @3pmbrew
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div class="contact-item-text">
+                <strong>Location</strong>
+                Cagayan de Oro, Philippines
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="footer-logo">3PM<span>.</span>BREW</div>
+    <p>© 2025 3PM Brew. Handcrafted with love in CDO. 🌿</p>
+    <p style="font-size:0.75rem;">
+      <a href="#home" style="color:rgba(235,225,209,0.5);text-decoration:none;">Back to top ↑</a>
+    </p>
+  </footer>
+
+  <!-- ============ JS ============ -->
+  <script src="js/main.js"></script>
+
+  <!-- Drink dot active styles (inline for simplicity) -->
+  <style>
+    .drink-dot.active {
+      background: var(--orange) !important;
+      transform: scale(1.3);
+    }
+  </style>
+
+</body>
+</html>
