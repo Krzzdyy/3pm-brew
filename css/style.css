@@ -1223,6 +1223,121 @@ footer p { font-size: 0.8rem; }
 }
 
 /* ============================================
+   MENU MODAL / LIGHTBOX
+   ============================================ */
+.menu-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 26, 11, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.menu-modal-overlay.open {
+  display: flex;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.menu-modal-card {
+  background: white;
+  border-radius: 28px;
+  max-width: 440px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  animation: modalSlideUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.menu-modal-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.15);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.menu-modal-close:hover {
+  background: var(--orange);
+  transform: scale(1.1) rotate(90deg);
+}
+
+.menu-modal-img-wrap {
+  background: var(--dark);
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.menu-modal-img-wrap img {
+  height: 240px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 32px rgba(0,0,0,0.5));
+  animation: floatDrink 3s ease-in-out infinite;
+}
+
+.menu-modal-body {
+  padding: 1.75rem 2rem 2rem;
+  text-align: center;
+}
+
+.menu-modal-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--forest);
+  margin-bottom: 0.5rem;
+}
+
+.menu-modal-desc {
+  font-size: 0.9rem;
+  color: #6a7d6c;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.menu-modal-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--orange);
+}
+
+@media (max-width: 480px) {
+  .menu-modal-card { border-radius: 20px; }
+  .menu-modal-img-wrap { height: 220px; }
+  .menu-modal-img-wrap img { height: 190px; }
+  .menu-modal-body { padding: 1.25rem 1.5rem 1.75rem; }
+  .menu-modal-name { font-size: 1.3rem; }
+}
+
+
+
+
+/* ============================================
    MOBILE NAV OVERLAY
    ============================================ */
 .mobile-nav {

@@ -116,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el.style.animationDelay = delay + 'ms';
   });
 
+  
   // ---- ADD TO CART BUTTON ANIMATION ----
   document.querySelectorAll('.drink-card-add').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -129,6 +130,61 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1200);
     });
   });
+
+  // ---- MENU CARD MODAL ----
+  const modal = document.getElementById('menu-modal');
+  const modalImg = document.getElementById('modal-img');
+  const modalName = document.getElementById('modal-name');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalPrice = document.getElementById('modal-price');
+  const modalClose = document.getElementById('menu-modal-close');
+
+  const openModal = (card) => {
+    const img = card.querySelector('.menu-card-img img');
+    const name = card.querySelector('.menu-card-name');
+    const desc = card.querySelector('.menu-card-desc');
+    const price = card.querySelector('.menu-card-price');
+
+    modalImg.src = img ? img.src : '';
+    modalImg.alt = name ? name.textContent : '';
+    modalName.textContent = name ? name.textContent : '';
+    modalDesc.textContent = desc ? desc.textContent : '';
+    modalPrice.textContent = price ? price.textContent : '';
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.querySelectorAll('.menu-card').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => openModal(card));
+  });
+
+  modalClose?.addEventListener('click', closeModal);
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+  document.querySelectorAll('.drink-card-add').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const original = btn.innerHTML;
+      btn.innerHTML = '✓';
+      btn.style.background = 'var(--sage)';
+      setTimeout(() => {
+        btn.innerHTML = original;
+        btn.style.background = '';
+      }, 1200);
+    });
+  });
+
 
   // ---- FEATURED DRINK CAROUSEL ----
   const drinks = [
