@@ -80,8 +80,134 @@ document.addEventListener('DOMContentLoaded', () => {
       tab.classList.add('active');
       const target = tab.dataset.tab;
       menuSections.forEach(section => {
-        section.style.display = section.dataset.menu === target ? 'grid' : 'none';
+        section.style.display = section.dataset.menu === target ? 'block' : 'none';
       });
+      const activeCarousel = document.querySelector(`.menu-carousel[data-menu="${target}"]`);
+      if (activeCarousel) updateMenuCarousel(activeCarousel);
+    });
+  });
+
+  // ---- MENU CAROUSELS ----
+  function updateMenuCarousel(carousel) {
+    const track = carousel.querySelector('.menu-carousel-track');
+    const viewport = carousel.querySelector('.menu-carousel-viewport');
+    const items = Array.from(track.children);
+    if (!items.length) return;
+
+    let activeIndex = parseInt(carousel.dataset.activeIndex || '0', 10);
+    activeIndex = Math.max(0, Math.min(activeIndex, items.length - 1));
+    carousel.dataset.activeIndex = activeIndex;
+
+    items.forEach((item, i) => item.classList.toggle('is-active', i === activeIndex));
+
+    const activeItem = items[activeIndex];
+    const offset = activeItem.offsetLeft + activeItem.offsetWidth / 2;
+    const translateX = viewport.clientWidth / 2 - offset;
+    track.style.transform = `translateX(${translateX}px)`;
+
+    const prevBtn = carousel.querySelector('.menu-carousel-arrow.prev');
+    const nextBtn = carousel.querySelector('.menu-carousel-arrow.next');
+    if (prevBtn) prevBtn.disabled = activeIndex === 0;
+    if (nextBtn) nextBtn.disabled = activeIndex === items.length - 1;
+
+    const dotsWrap = carousel.querySelector('.menu-carousel-dots');
+    if (dotsWrap) {
+      if (dotsWrap.children.length !== items.length) {
+        dotsWrap.innerHTML = '';
+        items.forEach((_, i) => {
+          const dot = document.createElement('button');
+          dot.className = 'menu-carousel-dot';
+          dot.setAttribute('aria-label', `Go to item ${i + 1}`);
+          dot.addEventListener('click', () => {
+            carousel.dataset.activeIndex = i;
+            updateMenuCarousel(carousel);
+          });
+          dotsWrap.appendChild(dot);
+        });
+      }
+      Array.from(dotsWrap.children).forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
+    }
+  }
+
+  document.querySelectorAll('.menu-carousel').forEach(carousel => {
+    carousel.dataset.activeIndex = carousel.dataset.activeIndex || '0';
+
+    const prevBtn = carousel.querySelector('.menu-carousel-arrow.prev');
+    const nextBtn = carousel.querySelector('.menu-carousel-arrow.next');
+    const items = carousel.querySelectorAll('.menu-carousel-item');
+
+    prevBtn?.addEventListener('click', () => {
+      const idx = Math.max(0, parseInt(carousel.dataset.activeIndex, 10) - 1);
+      carousel.dataset.activeIndex = idx;
+      updateMenuCarousel(carousel);
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      const idx = Math.min(items.length - 1, parseInt(carousel.dataset.activeIndex, 10) + 1);
+      carousel.dataset.activeIndex = idx;
+      updateMenuCarousel(carousel);
+    });
+
+    // Clicking a non-active side card centers it instead of opening the modal
+    items.forEach((item, i) => {
+      item.addEventListener('click', (e) => {
+        if (!item.classList.contains('is-active')) {
+          e.stopPropagation();
+          carousel.dataset.activeIndex = i;
+          updateMenuCarousel(carousel);
+        }
+      }, true);
+    });
+
+    updateMenuCarousel(carousel);
+  });
+
+  let carouselResizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(carouselResizeTimer);
+    carouselResizeTimer = setTimeout(() => {
+      document.querySelectorAll('.menu-carousel').forEach(carousel => {
+        if (carousel.offsetParent !== null) updateMenuCarousel(carousel);
+      });
+    }, 150);
+  });
+
+  // ---- MENU CAROUSEL SWIPE (touch) ----
+  document.querySelectorAll('.menu-carousel-viewport').forEach(viewport => {
+    const carousel = viewport.closest('.menu-carousel');
+    let startX = 0;
+    let startY = 0;
+    let tracking = false;
+    let horizontal = false;
+
+    viewport.addEventListener('touchstart', (e) => {
+      const t = e.touches[0];
+      startX = t.clientX;
+      startY = t.clientY;
+      tracking = true;
+      horizontal = false;
+    }, { passive: true });
+
+    viewport.addEventListener('touchmove', (e) => {
+      if (!tracking) return;
+      const t = e.touches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      if (!horizontal && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) horizontal = true;
+      if (horizontal) e.preventDefault();
+    }, { passive: false });
+
+    viewport.addEventListener('touchend', (e) => {
+      if (!tracking) return;
+      tracking = false;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) < 40) return;
+
+      const items = carousel.querySelectorAll('.menu-carousel-item');
+      let idx = parseInt(carousel.dataset.activeIndex, 10);
+      idx = dx < 0 ? Math.min(items.length - 1, idx + 1) : Math.max(0, idx - 1);
+      carousel.dataset.activeIndex = idx;
+      updateMenuCarousel(carousel);
     });
   });
 
