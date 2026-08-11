@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Spanish Latte',
       desc: 'Rich espresso meets sweet condensed milk for a bold, velvety kick.',
-      img: 'images/spanish latte.png',
+      img: 'images/spanish latte.webp',
       price: '₱89'
     },
     {
@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       name: 'Strawberry Milk',
       desc: 'Real strawberry chunks swirled into silky fresh milk. Pure joy in a cup.',
-      img: 'images/strawberry milk.png',
+      img: 'images/strawberry milk.webp',
       price: '₱89'
     },
     {
