@@ -3,278 +3,314 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3PM Brew — Slow pace. Strong Brew.</title>
+  <title>3PM Brew — Slow pace. Strong brew.</title>
+  <meta name="description" content="Handcrafted coffee, matcha and fruit drinks in Sanga-Sanga, Bongao, Tawi-Tawi. Open daily 3 PM – 10 PM." />
+  <meta name="theme-color" content="#1c3f1f" />
   <link rel="icon" type="image/jpg" href="images/favicon.jpg" />
+
+  <!-- Hide animated elements until GSAP takes over (skipped for reduced motion) -->
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('motion');
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:opsz,wght@9..40,300..700&family=Bebas+Neue&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..400,0..1,0&icon_names=alternate_email,arrow_upward,call,chevron_left,chevron_right,close,coffee,diversity_3,eyeglasses_2,location_city,mail,nest_clock_farsight_analog,north_east,palette,pin_drop&display=block" />
+  <link rel="preload" as="image" href="images/drinks/spanish-latte.webp" />
   <link rel="stylesheet" href="css/style.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-  
 </head>
 <body>
 
+  <a class="skip-link" href="#menu">Skip to menu</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
   <!-- =========== NAVBAR ============ -->
-  <nav class="navbar" id="navbar">
-    <a href="#" class="nav-logo"><img src="images/bean_icon.png" alt="3PM Brew" style="width: 50px; height: 50px;" />3PM<span>.</span>BREW</a>
-    <ul class="nav-links">
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Vibe</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
-      <li><a href="#location">Visit Us</a></li>
-      <li><a href="#contact" class="nav-cta">Order Now</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </div>
-  </nav>
+  <header class="navbar" id="navbar">
+    <a href="#home" class="nav-logo">
+      <img src="images/bean_icon.webp" alt="" width="40" height="40" />
+      <span>3PM<b>.</b>BREW</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Vibe</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#location">Visit us</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">Order now</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span>
+    </button>
+  </header>
 
   <!-- Mobile Nav -->
-  <div class="mobile-nav" id="mobile-nav">
-    <button class="mobile-close" id="mobile-close" aria-label="Close menu">✕</button>
-    <a href="#menu">Menu</a>
-    <a href="#about">About</a>
-    <a href="#experience">Vibe</a>
-    <a href="#testimonials">Reviews</a>
-    <a href="#location">Visit Us</a>
-    <a href="#contact">Order Now</a>
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu"><span class="material-symbols-outlined">close</span></button>
+    <nav aria-label="Mobile">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#experience">Vibe</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#location">Visit us</a>
+      <a href="#contact">Order now</a>
+    </nav>
+    <p class="mobile-nav-hours">Open daily, 3:00 – 10:00 PM</p>
   </div>
 
+  <main>
   <!-- ============ HERO ============ -->
   <section class="hero" id="home">
-    <div class="hero-particles" id="hero-particles"></div>
-    <div class="hero-bg-text">BREW<br>BREW</div>
+    <div class="hero-bg-text" aria-hidden="true">3PM</div>
 
     <div class="hero-content">
-
-      <!-- Left -->
       <div class="hero-left">
-       
+        <p class="open-status" id="open-status" data-hero>
+          <span class="open-dot"></span>
+          <span class="open-text">Open daily, 3:00 – 10:00 PM</span>
+        </p>
 
-        <h1 class="hero-title">
+        <h1 class="hero-title" id="hero-title">
           Slow pace.<br>
           <em>Strong brew.</em>
         </h1>
 
-        <p class="hero-subtitle">
+        <p class="hero-subtitle" data-hero>
           Handcrafted brews and good vibes in Sanga-Sanga, Tawi-Tawi.
-          Whether you're deep in deadlines or just here for the aesthetic — 3PM Brew is your spot.
+          Whether you're deep in deadlines or just here for the aesthetic, 3PM Brew is your spot.
         </p>
 
-        <div class="hero-buttons">
-          <a href="#menu" class="btn-primary">
-            View Menu
-          </a>
-          <a href="#location" class="btn-secondary">
-            Visit Us
-          </a>
+        <div class="hero-buttons" data-hero>
+          <a href="#menu" class="btn btn-primary">See the menu</a>
+          <a href="#location" class="btn btn-ghost">Get directions</a>
         </div>
 
-        <div class="hero-stats">
+        <dl class="hero-stats" data-hero>
           <div class="stat">
-            <span class="stat-number count-up" data-target="50" data-suffix="+">0+</span>
-            <span class="stat-label">Daily Orders</span>
+            <dt class="stat-label">Cups a day</dt>
+            <dd class="stat-number"><span class="count-up" data-target="50">50</span>+</dd>
           </div>
           <div class="stat">
-            <span class="stat-number count-up" data-target="21" data-suffix="">21</span>
-            <span class="stat-label">Drinks</span>
+            <dt class="stat-label">Drinks on the menu</dt>
+            <dd class="stat-number"><span class="count-up" data-target="21">21</span></dd>
           </div>
           <div class="stat">
-            <span class="stat-number count-up" data-target="98" data-suffix="%">0%</span>
-            <span class="stat-label">Happy Customers</span>
+            <dt class="stat-label">Happy customers</dt>
+            <dd class="stat-number"><span class="count-up" data-target="98">98</span>%</dd>
           </div>
-        </div>
+        </dl>
       </div>
 
-      <!-- Right — Featured Drink (Starbucks-style) -->
+      <!-- Right — clock + featured drink -->
       <div class="hero-right">
-        <div class="featured-card">
-          <div class="featured-tag">Most Loved Drink</div>
+        <div class="hero-stage">
+          <svg class="hero-clock" viewBox="0 0 400 400" aria-hidden="true">
+            <circle class="clock-face" cx="200" cy="200" r="188" />
+            <g class="clock-ticks" id="clock-ticks"></g>
+            <line class="clock-hour" x1="200" y1="200" x2="300" y2="200" />
+            <g class="clock-minute" id="clock-minute">
+              <line x1="200" y1="200" x2="200" y2="40" />
+            </g>
+            <circle class="clock-pin" cx="200" cy="200" r="6" />
+            <circle class="clock-three" cx="376" cy="200" r="7" />
+          </svg>
 
-          <img
-            id="featured-img"
-            src="images/spanish latte.png"
-            alt="Featured Drink"
-            class="featured-drink-img"
-          />
-
-          <p class="featured-drink-name" id="featured-name">Spanish Latte</p>
-          <p class="featured-drink-desc" id="featured-desc">
-            Rich espresso meets sweet condensed milk for a bold, velvety kick.
-          </p>
-
-          <div class="featured-price-row">
-            <span class="featured-price" id="featured-price">₱89</span>
-            <button class="featured-order-btn">Order Now</button>
-          </div>
-
-          <!-- Dot indicators -->
-          <div style="display:flex;justify-content:center;gap:0.5rem;margin-top:1.25rem;position:relative;z-index:1;">
-            <button class="drink-dot active" data-index="0" style="width:8px;height:8px;border-radius:50%;background:var(--orange);border:none;cursor:pointer;transition:all 0.3s;"></button>
-            <button class="drink-dot" data-index="1" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);border:none;cursor:pointer;transition:all 0.3s;"></button>
-            <button class="drink-dot" data-index="2" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);border:none;cursor:pointer;transition:all 0.3s;"></button>
-            <button class="drink-dot" data-index="3" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);border:none;cursor:pointer;transition:all 0.3s;"></button>
+          <div class="hero-drink-wrap">
+            <img
+              id="featured-img"
+              src="images/drinks/spanish-latte.webp"
+              alt="Spanish Latte"
+              class="featured-drink-img"
+              width="668" height="900"
+              fetchpriority="high"
+            />
           </div>
         </div>
 
-        <div class="hero-vertical-text">- 3PM Brew -</div>
+        <div class="featured-meta" data-hero>
+          <div class="featured-text">
+            <p class="featured-tag">Most loved</p>
+            <p class="featured-drink-name" id="featured-name">Spanish Latte</p>
+            <p class="featured-drink-desc" id="featured-desc">Rich espresso meets sweet condensed milk for a bold, velvety kick.</p>
+          </div>
+          <div class="featured-side">
+            <span class="featured-price" id="featured-price">₱89</span>
+            <div class="drink-dots" role="tablist" aria-label="Featured drinks">
+              <button class="drink-dot active" data-index="0" aria-label="Spanish Latte"></button>
+              <button class="drink-dot" data-index="1" aria-label="Matcha Latte"></button>
+              <button class="drink-dot" data-index="2" aria-label="Strawberry Milk"></button>
+              <button class="drink-dot" data-index="3" aria-label="Caramel Macchiato"></button>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
+
+    <a href="#bestsellers" class="scroll-cue" aria-label="Scroll to best sellers"><span></span></a>
   </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <span>Spanish Latte</span><i>✺</i><span>Dirty Matcha</span><i>✺</i><span>Sea Salt Latte</span><i>✺</i><span>Biscoff Coffee</span><i>✺</i><span>Strawberry Milk</span><i>✺</i><span>Cinnamon Roll Latte</span><i>✺</i><span>Dark Mocha</span><i>✺</i><span>Berry Matcha</span><i>✺</i>
+      </div>
+      <div class="marquee-group">
+        <span>Spanish Latte</span><i>✺</i><span>Dirty Matcha</span><i>✺</i><span>Sea Salt Latte</span><i>✺</i><span>Biscoff Coffee</span><i>✺</i><span>Strawberry Milk</span><i>✺</i><span>Cinnamon Roll Latte</span><i>✺</i><span>Dark Mocha</span><i>✺</i><span>Berry Matcha</span><i>✺</i>
+      </div>
+    </div>
+  </div>
 
   <!-- ============ BESTSELLERS ============ -->
   <section class="section bestsellers" id="bestsellers">
     <div class="container">
       <div class="bestsellers-header">
         <div>
-          <p class="section-label fade-up">Best Sellers</p>
-          <h2 class="section-title fade-up fade-up-delay-1">Our Signature <em>Drinks</em></h2>
+          <p class="section-label" data-reveal>Best sellers</p>
+          <h2 class="section-title" data-split>The four everyone orders first</h2>
         </div>
-        <a href="#menu" class="btn-primary fade-up fade-up-delay-2" style="text-decoration:none;font-size:0.85rem;padding:0.7rem 1.5rem;">
-          See Full Menu →
-        </a>
+        <a href="#menu" class="btn btn-outline" data-reveal>Full menu</a>
       </div>
 
       <div class="drinks-grid">
-
-        <!-- Spanish Latte -->
-        <div class="drink-card fade-up">
+        <article class="drink-card" data-reveal tabindex="0">
           <div class="drink-card-img-wrap">
-            
-            <img src="images/spanish latte.png" alt="Spanish Latte" />
+            <span class="drink-rank">1</span>
+            <img src="images/drinks/spanish-latte.webp" alt="Spanish Latte" width="668" height="900" loading="lazy" decoding="async" />
           </div>
           <div class="drink-card-body">
             <h3 class="drink-card-name">Spanish Latte</h3>
-            <p class="drink-card-desc">Bold espresso sweetened with rich condensed milk — the crowd favorite for a reason.</p>
+            <p class="drink-card-desc">Bold espresso sweetened with rich condensed milk. The crowd favorite for a reason.</p>
             <div class="drink-card-footer">
               <span class="drink-card-price">₱89</span>
-              <button class="drink-card-add" aria-label="Add to cart">+</button>
+              <span class="drink-card-more" aria-hidden="true"><span class="material-symbols-outlined">north_east</span></span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Matcha Latte -->
-        <div class="drink-card fade-up fade-up-delay-1">
+        <article class="drink-card" data-reveal tabindex="0">
           <div class="drink-card-img-wrap">
-            <img src="images/matcha latte.png" alt="Matcha Latte" />
+            <span class="drink-rank">2</span>
+            <img src="images/drinks/matcha-latte.webp" alt="Matcha Latte" width="556" height="750" loading="lazy" decoding="async" />
           </div>
           <div class="drink-card-body">
             <h3 class="drink-card-name">Matcha Latte</h3>
             <p class="drink-card-desc">Ceremonial-grade matcha blended into creamy smooth milk. Earthy, calming, and beautiful.</p>
             <div class="drink-card-footer">
               <span class="drink-card-price">₱99</span>
-              <button class="drink-card-add" aria-label="Add to cart">+</button>
+              <span class="drink-card-more" aria-hidden="true"><span class="material-symbols-outlined">north_east</span></span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Strawberry Milk -->
-        <div class="drink-card fade-up fade-up-delay-2">
+        <article class="drink-card" data-reveal tabindex="0">
           <div class="drink-card-img-wrap">
-            <img src="images/strawberry milk.png" alt="Strawberry Milk" />
+            <span class="drink-rank">3</span>
+            <img src="images/drinks/strawberry-milk.webp" alt="Strawberry Milk" width="671" height="900" loading="lazy" decoding="async" />
           </div>
           <div class="drink-card-body">
             <h3 class="drink-card-name">Strawberry Milk</h3>
             <p class="drink-card-desc">Real strawberry chunks swirled into silky fresh milk. Fruity, sweet, and totally addictive.</p>
             <div class="drink-card-footer">
               <span class="drink-card-price">₱89</span>
-              <button class="drink-card-add" aria-label="Add to cart">+</button>
+              <span class="drink-card-more" aria-hidden="true"><span class="material-symbols-outlined">north_east</span></span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Caramel Macchiato -->
-        <div class="drink-card fade-up fade-up-delay-3">
+        <article class="drink-card" data-reveal tabindex="0">
           <div class="drink-card-img-wrap">
-            <img src="images/caramel macchiato.png" alt="Caramel Macchiato" />
+            <span class="drink-rank">4</span>
+            <img src="images/drinks/caramel-macchiato.webp" alt="Caramel Macchiato" width="495" height="685" loading="lazy" decoding="async" />
           </div>
           <div class="drink-card-body">
             <h3 class="drink-card-name">Caramel Macchiato</h3>
             <p class="drink-card-desc">Espresso layered over vanilla milk, topped with a golden caramel drizzle. Decadent.</p>
             <div class="drink-card-footer">
               <span class="drink-card-price">₱89</span>
-              <button class="drink-card-add" aria-label="Add to cart">+</button>
+              <span class="drink-card-more" aria-hidden="true"><span class="material-symbols-outlined">north_east</span></span>
             </div>
           </div>
-        </div>
-
+        </article>
       </div>
     </div>
   </section>
 
   <!-- ============ ABOUT ============ -->
   <section class="section about" id="about">
+    <div class="about-bg-text" aria-hidden="true">3PM</div>
     <div class="container about-grid">
 
-      <div class="about-img-collage fade-up">
-        <div class="collage-img"><img src="images/brew-ambience.jpg" alt="3PM Brew ambiance" /></div>
-        <div class="collage-img"><img src="images/brew-drink.jpg" alt="3PM Brew drinks" /></div>
-        <div class="collage-img"><img src="images/brew-vibe.jpg" alt="3PM Brew vibe" /></div>
+      <div class="about-img-collage">
+        <figure class="collage-img"><img src="images/photos/brew-ambience.webp" alt="Warm lights inside 3PM Brew" width="1400" height="1050" loading="lazy" decoding="async" /></figure>
+        <figure class="collage-img"><img src="images/photos/brew-drink.webp" alt="A 3PM Brew drink on the counter" width="1400" height="934" loading="lazy" decoding="async" /></figure>
+        <figure class="collage-img"><img src="images/photos/brew-vibe.webp" alt="Customers relaxing at 3PM Brew" width="1400" height="934" loading="lazy" decoding="async" /></figure>
       </div>
 
-      <div class="fade-up fade-up-delay-1">
-        <p class="section-label" style="color:var(--orange);">Our Story</p>
-        <h2 class="section-title" style="color:var(--cream);margin-bottom:1rem;">
-          Built for <em>dreamers</em> and late-night grinders.
-        </h2>
-        <p class="section-desc" style="color:rgba(235,225,209,0.7);margin-bottom:1.5rem;">
-          3PM Brew started with one simple idea: great coffee shouldn't be complicated. We brew every cup with care — no shortcuts, no compromises. Just real coffee for real people.
+      <div class="about-copy">
+        <p class="section-label" data-reveal>Our story</p>
+        <h2 class="section-title" data-split>Built for dreamers and late-afternoon grinders.</h2>
+        <p class="section-desc" data-reveal>
+          3PM Brew started with one simple idea: great coffee shouldn't be complicated. We brew every cup with care. No shortcuts, no compromises. Just real coffee for real people.
         </p>
-        <p class="section-desc" style="color:rgba(235,225,209,0.7);margin-bottom:2rem;">
-          Whether you're powering through a thesis, catching up with friends, or just treating yourself at 3 in the afternoon — we'll have something waiting for you.
+        <p class="section-desc" data-reveal>
+          Whether you're powering through a thesis, catching up with friends, or treating yourself at 3 in the afternoon, we'll have something waiting for you.
         </p>
 
-        <div class="about-tags">
-          <div class="about-tag"><span class="material-symbols-outlined">eyeglasses_2</span> Study-Friendly</div>
-          <div class="about-tag"><span class="material-symbols-outlined">palette</span> Aesthetic Vibes</div>
-          <div class="about-tag"><span class="material-symbols-outlined">diversity_3</span> Community Space</div>
-          <div class="about-tag"><span class="material-symbols-outlined">coffee</span> Handcrafted Daily</div>
-        </div>
+        <ul class="about-tags">
+          <li class="about-tag" data-reveal><span class="material-symbols-outlined">eyeglasses_2</span> Study-friendly</li>
+          <li class="about-tag" data-reveal><span class="material-symbols-outlined">palette</span> Aesthetic corners</li>
+          <li class="about-tag" data-reveal><span class="material-symbols-outlined">diversity_3</span> Community space</li>
+          <li class="about-tag" data-reveal><span class="material-symbols-outlined">coffee</span> Handcrafted daily</li>
+        </ul>
 
-        <a href="#menu" class="btn-primary" style="display:inline-flex;margin-top:1rem;">Explore Our Menu →</a>
+        <a href="#menu" class="btn btn-primary" data-reveal>Explore the menu</a>
       </div>
 
     </div>
   </section>
 
-  <!-- ============ EXPERIENCE ============ -->
-  <section class="section experience" id="experience">
-    <div class="container">
-      <div class="exp-header fade-up">
-        <p class="section-label">The Vibe</p>
-        <h2 class="section-title">Your <em>Third Place</em></h2>
-        <p class="section-desc">Coffee shops aren't just about coffee anymore. They're about how they make you feel.</p>
-      </div>
-
-      <div class="exp-grid">
-
-        <div class="exp-card fade-up">
-          <img src="images/study_work.jpg" alt="Study and work vibe" class="exp-card-img" />
-          <div class="exp-card-content">
-            
-            <h3 class="exp-card-title">Study & Work</h3>
-            <p class="exp-card-desc">Cozy and enough caffeine to outlast any deadline.</p>
-          </div>
+  <!-- ============ EXPERIENCE (horizontal on desktop) ============ -->
+  <section class="experience" id="experience">
+    <div class="exp-pin">
+      <div class="exp-track">
+        <div class="exp-intro">
+          <p class="section-label" data-reveal>The vibe</p>
+          <h2 class="section-title" data-split>Your third place.</h2>
+          <p class="section-desc" data-reveal>Coffee shops aren't just about coffee anymore. They're about how they make you feel.</p>
+          <p class="exp-hint" aria-hidden="true">Keep scrolling</p>
         </div>
 
-        <div class="exp-card fade-up fade-up-delay-1">
-          <img src="images/afternoon.jpg" alt="Slow afternoon vibe" class="exp-card-img" />
+        <article class="exp-card">
+          <div class="exp-card-media"><img src="images/photos/study-work.webp" alt="Laptop and drink on a table at 3PM Brew" class="exp-card-img" width="1050" height="1400" loading="lazy" decoding="async" /></div>
           <div class="exp-card-content">
-            
-            <h3 class="exp-card-title">Slow Afternoons</h3>
+            <span class="exp-time">3:00 PM</span>
+            <h3 class="exp-card-title">Study &amp; work</h3>
+            <p class="exp-card-desc">Cozy seats and enough caffeine to outlast any deadline.</p>
+          </div>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-card-media"><img src="images/photos/afternoon.webp" alt="Afternoon light at 3PM Brew" class="exp-card-img" width="960" height="720" loading="lazy" decoding="async" /></div>
+          <div class="exp-card-content">
+            <span class="exp-time">5:30 PM</span>
+            <h3 class="exp-card-title">Slow afternoons</h3>
             <p class="exp-card-desc">Lo-fi beats, warm lighting, and a menu made for unwinding.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="exp-card fade-up fade-up-delay-2">
-          <img src="images/vibe-crew.jpg" alt="Hang out with friends" class="exp-card-img" />
+        <article class="exp-card">
+          <div class="exp-card-media"><img src="images/photos/vibe-crew.webp" alt="Friends hanging out at 3PM Brew" class="exp-card-img" width="1050" height="1400" loading="lazy" decoding="async" /></div>
           <div class="exp-card-content">
-            
-            <h3 class="exp-card-title">Catch Up With Crew</h3>
+            <span class="exp-time">8:00 PM</span>
+            <h3 class="exp-card-title">Catch up with the crew</h3>
             <p class="exp-card-desc">The perfect backdrop for conversations that go way deeper than the menu.</p>
           </div>
-        </div>
-
+        </article>
       </div>
     </div>
   </section>
@@ -282,322 +318,339 @@
   <!-- ============ FULL MENU ============ -->
   <section class="section menu-section" id="menu">
     <div class="container">
-      <div class="menu-header fade-up">
-        <p class="section-label">Full Menu</p>
-        <h2 class="section-title">What Are You <em>Craving?</em></h2>
-        <p class="section-desc">Explore everything we brew — from bold coffees to refreshing non-caffeinated sips.</p>
+      <div class="menu-header">
+        <p class="section-label" data-reveal>Full menu</p>
+        <h2 class="section-title" data-split>What are you craving?</h2>
+        <p class="section-desc" data-reveal>Everything we brew, from bold coffees to refreshing non-caffeinated sips. Pick a drink to see it up close.</p>
       </div>
 
-      <div class="menu-tabs fade-up fade-up-delay-1">
-        <button class="menu-tab active" data-tab="coffee">Coffee</button>
-        <button class="menu-tab" data-tab="noncoffee">Non-Coffee</button>
-        <button class="menu-tab" data-tab="special-menu">Special Menu</button>
+      <div class="menu-tabs" role="tablist" aria-label="Menu categories" data-reveal>
+        <span class="menu-tab-indicator" aria-hidden="true"></span>
+        <button class="menu-tab active" role="tab" aria-selected="true" data-tab="all">All</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-tab="coffee">Coffee</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-tab="noncoffee">Non-coffee</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-tab="special-menu">Specials</button>
       </div>
 
-      <!-- Coffee -->
-      <div class="menu-carousel menu-content" data-menu="coffee">
-        <div class="menu-carousel-row">
-          <button class="menu-carousel-arrow prev" aria-label="Previous drink">‹</button>
-          <div class="menu-carousel-viewport">
-            <div class="menu-carousel-track">
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/americano.png" alt="Americano" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Americano</h3>
-                    <p class="menu-card-desc">Bold, smooth, and straight to the point for coffee lovers who like it classic.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱69</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/spanish latte.png" alt="Spanish Latte" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Spanish Latte</h3>
-                    <p class="menu-card-desc">Creamy sweetness with a rich espresso kick that feels like comfort in a cup.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱89</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/caramel macchiato.png" alt="Caramel Macchiato" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Caramel Macchiato</h3>
-                    <p class="menu-card-desc">Silky espresso layered with buttery caramel goodness in every sip.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱89</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/spanish latte.png" alt="Hazelnut Coffee" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Hazelnut Coffee</h3>
-                    <p class="menu-card-desc">Silky espresso layered with buttery caramel goodness in every sip.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱89</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/dark-mocha.png" alt="Dark Mocha" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Dark Mocha</h3>
-                    <p class="menu-card-desc">Deep chocolate and espresso blended into a bold, indulgent treat.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱89</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/spanish latte.png" alt="Coffee Vanilla" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Coffee Vanilla</h3>
-                    <p class="menu-card-desc">Smooth coffee mellowed with sweet vanilla for an easy everyday favorite.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱89</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/dirty-matcha.png" alt="Dirty Matcha" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Dirty Matcha</h3>
-                    <p class="menu-card-desc">Earthy matcha meets bold espresso for a surprisingly addictive fusion.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱109 </span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/strawberry-espresso.png" alt="Strawberry Espresso" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Strawberry Espresso</h3>
-                    <p class="menu-card-desc">Fruity strawberry sweetness with a bold coffee twist that just works.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱109</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/biscoff-coffee.png" alt="Biscoff Coffee" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Biscoff Coffee</h3>
-                    <p class="menu-card-desc">Creamy coffee blended with caramelized Biscoff flavor for pure dessert vibes.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱89</span></div>
-                  </div>
-                </div>
-              </div>
+      <div class="menu-board">
+        <aside class="menu-preview" aria-hidden="true">
+          <div class="menu-preview-inner">
+            <div class="menu-preview-stage">
+              <svg class="menu-preview-ring" viewBox="0 0 400 400"><circle cx="200" cy="200" r="186" /></svg>
+              <img class="menu-preview-img" src="images/drinks/americano.webp" alt="" width="654" height="900" />
             </div>
-          </div>
-          <button class="menu-carousel-arrow next" aria-label="Next drink">›</button>
-        </div>
-        <div class="menu-carousel-dots"></div>
-      </div>
-
-      <!-- Non-Coffee -->
-      <div class="menu-carousel menu-content" data-menu="noncoffee" style="display:none;">
-        <div class="menu-carousel-row">
-          <button class="menu-carousel-arrow prev" aria-label="Previous drink">‹</button>
-          <div class="menu-carousel-viewport">
-            <div class="menu-carousel-track">
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/chocolate-milk.png" alt="Chocolate Milk" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Chocolate Milk</h3>
-                    <p class="menu-card-desc">Rich, creamy chocolate comfort that tastes like childhood upgraded.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱69</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/hazelnut-latte.png" alt="Hazelnut Milk" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Hazelnut Latte</h3>
-                    <p class="menu-card-desc">Rich hazelnut flavor combined with smooth steamed milk for a delightful treat.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱79</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/strawberry milk.png" alt="Strawberry Milk" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Strawberry Milk</h3>
-                    <p class="menu-card-desc">Sweet, creamy, and refreshingly fruity in the best way possible.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱89</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/matcha latte.png" alt="Matcha Latte" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Matcha Latte</h3>
-                    <p class="menu-card-desc">Smooth and earthy matcha with a creamy finish that feels calm and refreshing.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱99</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/choco-berry-swirl.png" alt="Choco Berry Swirl" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Choco Berry Swirl</h3>
-                    <p class="menu-card-desc">Chocolate and berry flavors collide into a sweet and playful drink.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱99</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/biscoff-latte.png" alt="Biscoff Latte" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Biscoff Latte</h3>
-                    <p class="menu-card-desc">Creamy milk and spiced Biscoff flavor blended into a cozy dessert drink.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱89</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/berry-matcha.png" alt="Berry Matcha" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Berry Matcha</h3>
-                    <p class="menu-card-desc">Fresh berry sweetness layered with earthy matcha for a refreshing contrast.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱109</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/sea-bubble.png" alt="Sea Bubble" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Sea Bubble</h3>
-                    <p class="menu-card-desc">Bright blue refreshment with a bubbly twist that tastes like summer.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱59</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/lychee.png" alt="Lychee" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Lychee</h3>
-                    <p class="menu-card-desc">Sweet and floral lychee flavor with a hint of tropical sweetness.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱59</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/kiwi.png" alt="Kiwi" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Kiwi</h3>
-                    <p class="menu-card-desc">Tangy, vibrant, and refreshingly fruity down to the last sip.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱59</span></div>
-                  </div>
-                </div>
-              </div>
+            <div class="menu-preview-text">
+              <p class="menu-preview-cat">Coffee</p>
+              <p class="menu-preview-name">Americano</p>
+              <p class="menu-preview-desc">Bold, smooth, and straight to the point for coffee lovers who like it classic.</p>
             </div>
+            <p class="menu-preview-price">₱69</p>
           </div>
-          <button class="menu-carousel-arrow next" aria-label="Next drink">›</button>
-        </div>
-        <div class="menu-carousel-dots"></div>
-      </div>
-      
-      <!---Special Menu -->
-      <div class="menu-carousel menu-content" data-menu="special-menu" style="display:none;">
-        <div class="menu-carousel-row">
-          <button class="menu-carousel-arrow prev" aria-label="Previous drink">‹</button>
-          <div class="menu-carousel-viewport">
-            <div class="menu-carousel-track">
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/cinnamon-latte.png" alt="Cinnamon Roll Latte" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Cinnamon Roll Latte</h3>
-                    <p class="menu-card-desc">Coffee blended with creamy milk and warm cinnamon sweetness.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱130 </span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-carousel-item">
-                <div class="menu-card">
-                  <div class="menu-card-img"><img src="images/seasalt-latte.png" alt="Sea Salt Latte" /></div>
-                  <div class="menu-card-body">
-                    <h3 class="menu-card-name">Sea Salt Latte</h3>
-                    <p class="menu-card-desc">Rich coffee topped with smooth, lightly salted cream.</p>
-                    <div class="menu-card-footer"><span class="menu-card-price">₱140</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        </aside>
+
+        <div class="menu-list" data-reveal>
+          <div class="menu-group" data-menu="coffee">
+            <h3 class="menu-group-title">Coffee <span>9 drinks</span></h3>
+            <ul class="menu-rows">
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/americano.webp" data-desc="Bold, smooth, and straight to the point for coffee lovers who like it classic." data-cat="Coffee">
+                  <span class="menu-thumb"><img src="images/drinks/americano.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Americano</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱69</span>
+                  </span>
+                  <span class="menu-item-desc">Bold, smooth, and straight to the point for coffee lovers who like it classic.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/spanish-latte.webp" data-desc="Creamy sweetness with a rich espresso kick that feels like comfort in a cup." data-cat="Coffee">
+                  <span class="menu-thumb"><img src="images/drinks/spanish-latte.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Spanish Latte</span>
+                    <span class="menu-item-tag">Bestseller</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱89</span>
+                  </span>
+                  <span class="menu-item-desc">Creamy sweetness with a rich espresso kick that feels like comfort in a cup.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/caramel-macchiato.webp" data-desc="Silky espresso layered with buttery caramel goodness in every sip." data-cat="Coffee">
+                  <span class="menu-thumb"><img src="images/drinks/caramel-macchiato.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Caramel Macchiato</span>
+                    <span class="menu-item-tag">Bestseller</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱89</span>
+                  </span>
+                  <span class="menu-item-desc">Silky espresso layered with buttery caramel goodness in every sip.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/spanish-latte.webp" data-desc="Silky espresso layered with buttery caramel goodness in every sip." data-cat="Coffee">
+                  <span class="menu-thumb"><img src="images/drinks/spanish-latte.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Hazelnut Coffee</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱89</span>
+                  </span>
+                  <span class="menu-item-desc">Silky espresso layered with buttery caramel goodness in every sip.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/dark-mocha.webp" data-desc="Deep chocolate and espresso blended into a bold, indulgent treat." data-cat="Coffee">
+                  <span class="menu-thumb"><img src="images/drinks/dark-mocha.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Dark Mocha</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱89</span>
+                  </span>
+                  <span class="menu-item-desc">Deep chocolate and espresso blended into a bold, indulgent treat.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/spanish-latte.webp" data-desc="Smooth coffee mellowed with sweet vanilla for an easy everyday favorite." data-cat="Coffee">
+                  <span class="menu-thumb"><img src="images/drinks/spanish-latte.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Coffee Vanilla</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱89</span>
+                  </span>
+                  <span class="menu-item-desc">Smooth coffee mellowed with sweet vanilla for an easy everyday favorite.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/dirty-matcha.webp" data-desc="Earthy matcha meets bold espresso for a surprisingly addictive fusion." data-cat="Coffee">
+                  <span class="menu-thumb"><img src="images/drinks/dirty-matcha.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Dirty Matcha</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱109</span>
+                  </span>
+                  <span class="menu-item-desc">Earthy matcha meets bold espresso for a surprisingly addictive fusion.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/strawberry-espresso.webp" data-desc="Fruity strawberry sweetness with a bold coffee twist that just works." data-cat="Coffee">
+                  <span class="menu-thumb"><img src="images/drinks/strawberry-espresso.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Strawberry Espresso</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱109</span>
+                  </span>
+                  <span class="menu-item-desc">Fruity strawberry sweetness with a bold coffee twist that just works.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/biscoff-coffee.webp" data-desc="Creamy coffee blended with caramelized Biscoff flavor for pure dessert vibes." data-cat="Coffee">
+                  <span class="menu-thumb"><img src="images/drinks/biscoff-coffee.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Biscoff Coffee</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱89</span>
+                  </span>
+                  <span class="menu-item-desc">Creamy coffee blended with caramelized Biscoff flavor for pure dessert vibes.</span>
+                </button>
+              </li>
+            </ul>
           </div>
-          <button class="menu-carousel-arrow next" aria-label="Next drink">›</button>
+          <div class="menu-group" data-menu="noncoffee">
+            <h3 class="menu-group-title">Non-coffee <span>10 drinks</span></h3>
+            <ul class="menu-rows">
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/chocolate-milk.webp" data-desc="Rich, creamy chocolate comfort that tastes like childhood upgraded." data-cat="Non-coffee">
+                  <span class="menu-thumb"><img src="images/drinks/chocolate-milk.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Chocolate Milk</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱69</span>
+                  </span>
+                  <span class="menu-item-desc">Rich, creamy chocolate comfort that tastes like childhood upgraded.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/hazelnut-latte.webp" data-desc="Rich hazelnut flavor combined with smooth steamed milk for a delightful treat." data-cat="Non-coffee">
+                  <span class="menu-thumb"><img src="images/drinks/hazelnut-latte.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Hazelnut Latte</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱79</span>
+                  </span>
+                  <span class="menu-item-desc">Rich hazelnut flavor combined with smooth steamed milk for a delightful treat.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/strawberry-milk.webp" data-desc="Sweet, creamy, and refreshingly fruity in the best way possible." data-cat="Non-coffee">
+                  <span class="menu-thumb"><img src="images/drinks/strawberry-milk.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Strawberry Milk</span>
+                    <span class="menu-item-tag">Bestseller</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱89</span>
+                  </span>
+                  <span class="menu-item-desc">Sweet, creamy, and refreshingly fruity in the best way possible.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/matcha-latte.webp" data-desc="Smooth and earthy matcha with a creamy finish that feels calm and refreshing." data-cat="Non-coffee">
+                  <span class="menu-thumb"><img src="images/drinks/matcha-latte.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Matcha Latte</span>
+                    <span class="menu-item-tag">Bestseller</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱99</span>
+                  </span>
+                  <span class="menu-item-desc">Smooth and earthy matcha with a creamy finish that feels calm and refreshing.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/choco-berry-swirl.webp" data-desc="Chocolate and berry flavors collide into a sweet and playful drink." data-cat="Non-coffee">
+                  <span class="menu-thumb"><img src="images/drinks/choco-berry-swirl.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Choco Berry Swirl</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱99</span>
+                  </span>
+                  <span class="menu-item-desc">Chocolate and berry flavors collide into a sweet and playful drink.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/biscoff-latte.webp" data-desc="Creamy milk and spiced Biscoff flavor blended into a cozy dessert drink." data-cat="Non-coffee">
+                  <span class="menu-thumb"><img src="images/drinks/biscoff-latte.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Biscoff Latte</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱89</span>
+                  </span>
+                  <span class="menu-item-desc">Creamy milk and spiced Biscoff flavor blended into a cozy dessert drink.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/berry-matcha.webp" data-desc="Fresh berry sweetness layered with earthy matcha for a refreshing contrast." data-cat="Non-coffee">
+                  <span class="menu-thumb"><img src="images/drinks/berry-matcha.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Berry Matcha</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱109</span>
+                  </span>
+                  <span class="menu-item-desc">Fresh berry sweetness layered with earthy matcha for a refreshing contrast.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/sea-bubble.webp" data-desc="Bright blue refreshment with a bubbly twist that tastes like summer." data-cat="Non-coffee">
+                  <span class="menu-thumb"><img src="images/drinks/sea-bubble.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Sea Bubble</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱59</span>
+                  </span>
+                  <span class="menu-item-desc">Bright blue refreshment with a bubbly twist that tastes like summer.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/lychee.webp" data-desc="Sweet and floral lychee flavor with a hint of tropical sweetness." data-cat="Non-coffee">
+                  <span class="menu-thumb"><img src="images/drinks/lychee.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Lychee</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱59</span>
+                  </span>
+                  <span class="menu-item-desc">Sweet and floral lychee flavor with a hint of tropical sweetness.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/kiwi.webp" data-desc="Tangy, vibrant, and refreshingly fruity down to the last sip." data-cat="Non-coffee">
+                  <span class="menu-thumb"><img src="images/drinks/kiwi.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Kiwi</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱59</span>
+                  </span>
+                  <span class="menu-item-desc">Tangy, vibrant, and refreshingly fruity down to the last sip.</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="menu-group" data-menu="special-menu">
+            <h3 class="menu-group-title">Specials <span>2 drinks</span></h3>
+            <ul class="menu-rows">
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/cinnamon-latte.webp" data-desc="Coffee blended with creamy milk and warm cinnamon sweetness." data-cat="Specials">
+                  <span class="menu-thumb"><img src="images/drinks/cinnamon-latte.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Cinnamon Roll Latte</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱130</span>
+                  </span>
+                  <span class="menu-item-desc">Coffee blended with creamy milk and warm cinnamon sweetness.</span>
+                </button>
+              </li>
+              <li class="menu-row">
+                <button class="menu-item" data-img="images/drinks/seasalt-latte.webp" data-desc="Rich coffee topped with smooth, lightly salted cream." data-cat="Specials">
+                  <span class="menu-thumb"><img src="images/drinks/seasalt-latte.webp" alt="" loading="lazy" decoding="async" /></span>
+                  <span class="menu-item-main">
+                    <span class="menu-item-name">Sea Salt Latte</span>
+                    <span class="menu-item-leader" aria-hidden="true"></span>
+                    <span class="menu-item-price">₱140</span>
+                  </span>
+                  <span class="menu-item-desc">Rich coffee topped with smooth, lightly salted cream.</span>
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="menu-carousel-dots"></div>
       </div>
-  
-
-    
-
     </div>
   </section>
 
   <!-- ============ TESTIMONIALS ============ -->
   <section class="section testimonials" id="testimonials">
     <div class="container">
-      <div class="testimonials-header fade-up">
-        <p class="section-label">Reviews</p>
-        <h2 class="section-title">What People <em>Say</em></h2>
+      <div class="testimonials-header">
+        <p class="section-label" data-reveal>Reviews</p>
+        <h2 class="section-title" data-split>What people say</h2>
       </div>
 
       <div class="reviews-grid">
-
-        <div class="review-card fade-up">
+        <figure class="review-card" data-reveal>
           <div class="review-screenshot-static">
-            <img src="images/review_1.jpg" alt="Customer review screenshot" />
+            <img src="images/review_1.jpg" alt="Customer review screenshot" loading="lazy" decoding="async" />
           </div>
-          <div class="review-author">
-            <div class="review-avatar">1</div>
+          <figcaption class="review-author">
+            <div class="review-avatar" aria-hidden="true">★</div>
             <div>
-              <div class="review-name">Review Author 1</div>
-              <div class="review-stars">★★★★★</div>
+              <div class="review-name">Customer message</div>
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
             </div>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
 
-        <div class="review-card fade-up fade-up-delay-1">
+        <figure class="review-card" data-reveal>
           <div class="review-screenshot-static">
-            <img src="images/review_2.jpg" alt="Customer review screenshot" />
+            <img src="images/review_2.jpg" alt="Customer review screenshot" loading="lazy" decoding="async" />
           </div>
-          <div class="review-author">
-            <div class="review-avatar">2</div>
+          <figcaption class="review-author">
+            <div class="review-avatar" aria-hidden="true">★</div>
             <div>
-              <div class="review-name">Review Author 2</div>
-              <div class="review-stars">★★★★★</div>
+              <div class="review-name">Customer message</div>
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
             </div>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
 
-        <div class="review-card fade-up fade-up-delay-2">
+        <figure class="review-card" data-reveal>
           <div class="review-screenshot-static">
-            <img src="images/review_3.jpg" alt="Customer review screenshot" />
+            <img src="images/review_3.jpg" alt="Customer review screenshot" loading="lazy" decoding="async" />
           </div>
-          <div class="review-author">
-            <div class="review-avatar">3</div>
+          <figcaption class="review-author">
+            <div class="review-avatar" aria-hidden="true">★</div>
             <div>
-              <div class="review-name">Review Author 3</div>
-              <div class="review-stars">★★★★★</div>
+              <div class="review-name">Customer post</div>
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
             </div>
-          </div>
-        </div>
-
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -606,55 +659,48 @@
   <section class="section location-section" id="location">
     <div class="container location-grid">
 
-      <!-- Map Embed -->
-      <div class="location-map fade-up">
+      <div class="location-map" data-reveal>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d683.2386341764576!2d119.7422073967698!3d5.038054488808196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32410b308ffabd21%3A0x3d251a50e8c2da7c!2s3PM%20Brew!5e1!3m2!1sen!2sph!4v1779173680476!5m2!1sen!2sph"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="3PM Brew Location"
+          title="3PM Brew on Google Maps"
         ></iframe>
       </div>
 
-      <div class="fade-up fade-up-delay-1">
-        <p class="section-label" style="color:var(--orange);">Find Us</p>
-        <h2 class="section-title" style="margin-bottom:2rem;">Come <em>Find Us</em></h2>
+      <div class="location-copy">
+        <p class="section-label" data-reveal>Find us</p>
+        <h2 class="section-title" data-split>Come by after three.</h2>
 
-        <div class="location-info">
-          <div class="location-detail">
-            <div class="location-detail-icon"><span class="material-symbols-outlined">pin_drop
-</span></div>
+        <ul class="location-info">
+          <li class="location-detail" data-reveal>
+            <div class="location-detail-icon"><span class="material-symbols-outlined">pin_drop</span></div>
             <div class="location-detail-text">
-              <h4>Address</h4>
-              <p>Sanga-Sanga, Bongao<br>Tawi-Tawi, Bongao, Philippines, 7500</p>
+              <h3>Address</h3>
+              <p>Sanga-Sanga, Bongao<br>Tawi-Tawi, Philippines 7500</p>
             </div>
-          </div>
+          </li>
 
-          <div class="location-detail">
-            <div class="location-detail-icon"><span class="material-symbols-outlined">
-nest_clock_farsight_analog
-</span></div>
+          <li class="location-detail" data-reveal>
+            <div class="location-detail-icon"><span class="material-symbols-outlined">nest_clock_farsight_analog</span></div>
             <div class="location-detail-text">
-              <h4>Operating Hours</h4>
-              <div class="hours-grid">
-                <div class="hour-row"><span>MONDAY-SUNDAY</span></div>
-                <div class="hour-row"><span>3:00 PM – 10:00 PM</span></div>
-              </div>
+              <h3>Hours</h3>
+              <p>Monday – Sunday, 3:00 PM – 10:00 PM</p>
+              <p class="open-status open-status--inline"><span class="open-dot"></span><span class="open-text"></span></p>
             </div>
-          </div>
+          </li>
 
-          <div class="location-detail">
-            <div class="location-detail-icon"><span class="material-symbols-outlined">
-location_city
-</span></div>
+          <li class="location-detail" data-reveal>
+            <div class="location-detail-icon"><span class="material-symbols-outlined">location_city</span></div>
             <div class="location-detail-text">
-              <h4>Landmark</h4>
-              <p>Near at DJ's Laundry Shop.</p>
+              <h3>Landmark</h3>
+              <p>Near DJ's Laundry Shop</p>
             </div>
-          </div>
+          </li>
+        </ul>
 
-        </div>
+        <a class="btn btn-primary" data-reveal href="https://www.google.com/maps/search/?api=1&query=3PM+Brew+Sanga-Sanga+Bongao" target="_blank" rel="noopener">Open in Google Maps</a>
       </div>
 
     </div>
@@ -663,90 +709,80 @@ location_city
   <!-- ============ CONTACT / SOCIAL ============ -->
   <section class="section contact-section" id="contact">
     <div class="container">
-      <div class="contact-inner fade-up">
+      <div class="contact-inner" data-reveal>
         <div class="contact-grid">
 
           <div class="contact-left">
-            <p class="section-label" style="color:var(--orange);">Stay Connected</p>
-            <h2 class="section-title">Follow us for new<br><em>drinks & promos.</em></h2>
-            <p>We drop new drinks, limited offers, and behind-the-scenes content. Don't miss out.</p>
+            <p class="section-label">Order &amp; stay in touch</p>
+            <h2 class="section-title" data-split>Message us to order, follow us for new drinks.</h2>
+            <p>We drop new drinks, limited offers, and behind-the-scenes content. Send us a message on Facebook or Instagram to place an order.</p>
             <div class="social-links">
-              <a href="https://www.instagram.com/threepmbrew?igsh=YW1pbmtvY2VjcXJ5" class="social-link">
-                 Instagram
-              </a>
-              <a href="https://www.facebook.com/profile.php?id=61554490813132" class="social-link">
-                 Facebook
-              </a>
-              <a href="https://www.tiktok.com/@threepmbrew?_r=1&_t=ZS-96TvRDfXpH2" class="social-link">
-                 TikTok
-              </a>
+              <a href="https://www.facebook.com/profile.php?id=61554490813132" class="social-link social-link--primary" target="_blank" rel="noopener">Order on Facebook</a>
+              <a href="https://www.instagram.com/threepmbrew?igsh=YW1pbmtvY2VjcXJ5" class="social-link" target="_blank" rel="noopener">Instagram</a>
+              <a href="https://www.tiktok.com/@threepmbrew?_r=1&_t=ZS-96TvRDfXpH2" class="social-link" target="_blank" rel="noopener">TikTok</a>
             </div>
           </div>
 
-          <div class="contact-details">
-            <div class="contact-item">
-              <div class="contact-item-icon"><span class="material-symbols-outlined">phone_in_talk</span></div>
-              <div class="contact-item-text">
-                <strong>Phone / WhatsApp</strong>
-                +639757365938
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-item-icon"><span class="material-symbols-outlined">email</span></div>
-              <div class="contact-item-text">
-                <strong>Email</strong>
-                threepmbrew@gmail.com
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-item-icon"><span class="material-symbols-outlined">mobile</span></div>
-              <div class="contact-item-text">
-                <strong>Instagram</strong>
-                @threepmbrew
-              </div>
-            </div>
-          
-          </div>
+          <ul class="contact-details">
+            <li>
+              <a class="contact-item" href="tel:+639757365938">
+                <span class="contact-item-icon"><span class="material-symbols-outlined">call</span></span>
+                <span class="contact-item-text"><strong>Phone / WhatsApp</strong>+63 975 736 5938</span>
+              </a>
+            </li>
+            <li>
+              <a class="contact-item" href="mailto:threepmbrew@gmail.com">
+                <span class="contact-item-icon"><span class="material-symbols-outlined">mail</span></span>
+                <span class="contact-item-text"><strong>Email</strong>threepmbrew@gmail.com</span>
+              </a>
+            </li>
+            <li>
+              <a class="contact-item" href="https://www.instagram.com/threepmbrew?igsh=YW1pbmtvY2VjcXJ5" target="_blank" rel="noopener">
+                <span class="contact-item-icon"><span class="material-symbols-outlined">alternate_email</span></span>
+                <span class="contact-item-text"><strong>Instagram</strong>@threepmbrew</span>
+              </a>
+            </li>
+          </ul>
 
         </div>
       </div>
     </div>
   </section>
+  </main>
 
   <!-- ============ FOOTER ============ -->
-  <footer>
-    <div class="footer-logo">3PM<span>.</span>BREW</div>
-    <p>© 2026 3PM Brew. Handcrafted with love. 🌿</p>
-    <p style="font-size:0.75rem;">
-      <a href="#home" style="color:rgba(235,225,209,0.5);text-decoration:none;">Back to top ↑</a>
-    </p>
+  <footer class="footer">
+    <div class="footer-top">
+      <p>Slow pace. Strong brew. Open daily, 3:00 – 10:00 PM.</p>
+      <a href="#home" class="back-to-top">Back to top <span class="material-symbols-outlined">arrow_upward</span></a>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">3PM<span>.</span>BREW</div>
+    <p class="footer-copy">© 2026 3PM Brew. Handcrafted in Tawi-Tawi.</p>
   </footer>
 
   <!-- ============ MENU MODAL ============ -->
-  <div class="menu-modal-overlay" id="menu-modal" role="dialog" aria-modal="true" aria-label="Drink detail">
-    <div class="menu-modal-card">
-      <button class="menu-modal-close" id="menu-modal-close" aria-label="Close">✕</button>
+  <div class="menu-modal-overlay" id="menu-modal" role="dialog" aria-modal="true" aria-labelledby="modal-name" hidden>
+    <div class="menu-modal-card" data-lenis-prevent>
+      <button class="menu-modal-close" id="menu-modal-close" aria-label="Close"><span class="material-symbols-outlined">close</span></button>
       <div class="menu-modal-img-wrap">
         <img src="" alt="" id="modal-img" />
       </div>
       <div class="menu-modal-body">
         <h2 class="menu-modal-name" id="modal-name"></h2>
         <p class="menu-modal-desc" id="modal-desc"></p>
-        <div class="menu-modal-price" id="modal-price"></div>
+        <div class="menu-modal-footer">
+          <span class="menu-modal-price" id="modal-price"></span>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ============ JS ============ -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
   <script src="js/main.js"></script>
-
-  <!-- Drink dot active styles (inline for simplicity) -->
-  <style>
-    .drink-dot.active {
-      background: var(--orange) !important;
-      transform: scale(1.3);
-    }
-  </style>
-
 </body>
 </html>
